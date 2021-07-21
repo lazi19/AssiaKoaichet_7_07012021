@@ -41,7 +41,7 @@ Messages.init({
     attachment: "ezaeokazo"
   })
   const users = await Messages.findAll();
-  console.log(users)
+  // console.log(users)
 })();
 
 
