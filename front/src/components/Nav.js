@@ -1,9 +1,11 @@
 function Nav() {
     return <div>
                 <nav>
-                    <h1 class="">
+                    
+                
+                    <h1 class="">Bienvenue sur le Groupomania Social Network !
                         <a href="">
-                            <img class="logo" class="logo" src="../public/logoGroupomania.png" alt="Logo Groupomania "/>
+                            <img class="logo" class="logo" src="../logoGroupomaniaBlack.png" alt="Logo Groupomania "/>
                         </a>
                     </h1>
 

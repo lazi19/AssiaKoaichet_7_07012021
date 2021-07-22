@@ -1,13 +1,13 @@
 function Signup() {
     return (
- <div class="creationCompte" >
+        <div class="creationCompte" >
                 <fieldset>
                     <form id="formSignin" className="formSignin" name="form">
                         <h2 class="creationCompt">Créer un compte</h2>
                         <hr></hr>
                         <div className="formNom">
                             <label for="nom">Nom </label>
-                            <input  type="text"  id="nom"  name="nom"  value=""  required  placeholder="Votre Nnom"> </input>
+                            <input  type="text"  id="nom"  name="nom"  value=""  required  placeholder="Votre Nnom"/>
                         </div> 
 
                         <div className="formMail">
