@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.use('/api/users', userRoutes); // Va servir les routes dédiées au users
+app.use('/api/user', userRoutes); // Va servir les routes dédiées au users
 
 const dbTest = async function () {
   try {

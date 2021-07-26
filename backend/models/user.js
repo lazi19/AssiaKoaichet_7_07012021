@@ -1,9 +1,31 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
 
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
+
+  // const User = sequelize.define("User", {
+  //   firstName: {
+  //     type: DataTypes.STRING,
+  //     allowNull: false,
+  //     validate: { notEmpty: true}
+  //   } ,
+
+  //   lastName: {
+  //     type: DataTypes.STRING,
+  //     allowNull: false,
+  //     validate: { notEmpty: true}
+  //   } 
+
+
+    
+  //   // lastname: DataTypes.STRING,
+  //   // email: DataTypes.STRING,
+  //   // password: DataTypes.STRING,
+  //   // bio: DataTypes.STRING,
+  //   // imageUrl: DataTypes.STRING,
+  //   // isAdmin: DataTypes.BOOLEAN
+    
+  // })
   class User extends Model {
     /**
      * Helper method for defining associations.
@@ -15,13 +37,20 @@ module.exports = (sequelize, DataTypes) => {
       models.User.hasMany(models.Message)
     }*/
   };
-  User.init({
-    email: DataTypes.STRING,
-    username: DataTypes.STRING,
+
+  User.init({    
+    firstname: DataTypes.STRING,
+    lastname: DataTypes.STRING,
+    mail: DataTypes.STRING,
     password: DataTypes.STRING,
+    bio: DataTypes.STRING,
+    imageUrl: DataTypes.STRING,
+    isAdmin: DataTypes.BOOLEAN
+   
   }, {
     sequelize,
-    modelName: 'user',
+    modelName: 'User',
   });
+
   return User;
 };
