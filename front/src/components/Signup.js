@@ -3,20 +3,31 @@ import '../styles/Signup.css'
 
 
 function Signup() {
-    constructor() {
-        super();
 
-        this.state = {        
-            lastname: "",
-            firstname:"",
-            mail: "",
-            password: "", 
-            errors: {}
-        };
-    }
+    // constructor() {
+    //     super();
+
+    //     this.state = {        
+    //         lastname: "",
+    //         firstname:"",
+    //         mail: "",
+    //         password: "", 
+    //         confirmPassword: "",
+    //         errors: {}
+    //     };
+    // }
+
+    const [state , setState] = useState({
+        lastname: "",
+        firstname:"",
+        mail: "",
+        password: "", 
+        confirmPassword: "",
+        errors: {}
+    })
     
 
-    onChange = e => {
+    onChange = (e) => {
 		this.setState({ [e.target.id]: e.target.value });
 	};
 
@@ -27,13 +38,14 @@ function Signup() {
 			lastname: "",
             firstname: "",
             mail: "",
-            password: ""
+            password: "",
+            confirmPassword: ""
 		})
     }
     
-    // const fetchSignup = e => {
-    //     e.preventDefault()
-    //     // console.log(this.state)
+    const fetchSignup = e => {
+        e.preventDefault()
+        // console.log(this.state)
     
         fetch("http://localhost:3000/api/user/signup", {
             method: 'POST',
@@ -46,16 +58,16 @@ function Signup() {
              })
 
         })  
-            .then(response => response.json())
-            .then(data => this.setState({ postId: data.id })) 
+        .then(response => response.json())    // .then(() => res.status(200).json({ message: "Utilisateur créé !" }))     
+            .then(data => this.setState({ postId: data.id })) // redirectToHome(); 
             .catch(error =>{console.log(error)});
 
-    // }
+    }
 
     return (
         <div className="creationCompte" >
                 <fieldset>
-                    <form id="formSignin" className="formSignin" name="form" onSubmit={this.onSubmit}>
+                     <form id="formSignin" className="formSignin" name="form" onSubmit={fetchSignup} > {/*onSubmit={this.onSubmit} */}
                         <h2 className="creationCompt">Créer un compte</h2>
                         <hr></hr>
                         <div className="formNom">
@@ -97,6 +109,15 @@ function Signup() {
                             /><br /><br />
                         </div>
 
+                        <div className="formConfirmPassword">
+                            <label htmlFor="confirmPassword">Mot de passe</label>
+                            <input type="password"  id="confirmPassword"  name="confirmPassword"  required  placeholder="Enter Password "
+                             onChange={this.onChange} 
+                             value={this.state.confirmPassword}
+                             error={error.confirmPassword}
+                            /><br /><br />
+                        </div>
+
                        
 
                         <div className="clearfix">
@@ -104,7 +125,7 @@ function Signup() {
                         </div>
                     </form> 
                     <p>Vous avez déjà un compte? <br />
-                    <a href="/">Log in here</a>
+                    <a href="./Login">Log in here</a>
                     </p>
                 </fieldset>
         </div>  

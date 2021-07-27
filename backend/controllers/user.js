@@ -29,10 +29,11 @@ exports.signup = (req, res, next) => {
   const lastname =  req.body.lastname;
   const mail = req.body.mail;
   const password = req.body.password;
+  const confirmPassword= req.body.confirmPassword;
 
  // vérification que tous les champs sont remplis
  if(firstname === null || firstname === '' || lastname === null || lastname === '' 
- || mail === null || mail === '' || password === null || password === '') {
+ || mail === null || mail === '' || password === null || password === '' || confirmPassword === null || confirmPassword === '') {
  return res.status(400).json({'error': "Veuillez remplir l'ensemble des champs du formulaire"});
 }
 

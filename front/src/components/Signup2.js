@@ -25,7 +25,7 @@ function Signup() {
             password: "", 
             errors: {}
         };
-    };
+    }
     
 
     onChange = e => {
