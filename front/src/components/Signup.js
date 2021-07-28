@@ -1,17 +1,19 @@
 
 
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import useSignUp from "../hooks/useSignup";
+import { ErrorMessage } from '@hookform/error-message';
 import '../styles/Signup.css'
 
 
 const Signup = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, errors, handleSubmit } = useForm();
     const { data, error, isLoading, signUp } = useSignUp();
     console.log('data', data)
     console.log('error', error)
     console.log('isLoading', isLoading)
+   
     console.log('=============')
 
     const onSubmit = data => {
@@ -29,8 +31,9 @@ const Signup = () => {
                             <label htmlFor="lastname">Nom </label>
                             <input
                                 type="text"  id="lastname"  required  placeholder="Votre Nnom"
-                                {...register("lastname")}
+                                {...register("lastname")} 
                             />
+                           
                         </div>
 
                         <div className="formPrenom">
@@ -49,13 +52,14 @@ const Signup = () => {
                         <div className="formPassword">
                             <label htmlFor="password">Mot de passe</label>
                             <input type="password"  id="password"  name="password"  required  placeholder="Enter Password"
-                                   {...register("password")}
+                                   {...register("password") }
+                                //    {...register("password", { minLength: 8, validate: [/[a-z]/, /[A-Z]/, /[0-9]/, /[^a-zA-Z0-9]/] }) }
                             />
-                            <br /><br />
+                            {/* {errors.password  && "must be 8 chars"} */}
                         </div>
 
                         <div className="formConfirmPassword">
-                            <label htmlFor="confirmPassword">Mot de passe</label>
+                            <label htmlFor="confirmPassword">Confirmation mot de passe</label>
                             <input type="password"  id="confirmPassword"  name="confirmPassword"  required  placeholder="Enter Password"
                                    {...register("confirmPassword")}
                             /><br /><br />
