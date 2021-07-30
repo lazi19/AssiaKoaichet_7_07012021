@@ -5,6 +5,7 @@
     "database": "bd_groupomania",
     "host": "localhost",
     "dialect": "mysql"
+  
   },
   
   "test": {

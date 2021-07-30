@@ -11,25 +11,29 @@ const fs = require('fs');
 //const User = db.user; 
 
 // logique métier : lire tous utilisateurs
-exports.getAllUsers = (req, res, next) => {
-    User.findAll()
-      .then((users) => {
-        console.log(users);
-        res.status(200).json(users);
-      })
-      .catch(error => res.status(400).json({ error }));
-     
-  };
+
+                      exports.getAllUsers = (req, res, next) => {
+                          User.findAll()
+                            .then((users) => {
+                              console.log(users);
+                              res.status(200).json(users);
+                            })
+                            .catch(error => res.status(400).json({ error }));
+                          
+                        };
 
  // Logiques métiers pour les utilisateurs
 // Création de nouveaux utilisateurs (Post signup) 
 exports.signup = (req, res, next) => {
+  
   // éléments de la requète
-  const firstname = req.body.firstname;
-  const lastname =  req.body.lastname;
-  const mail = req.body.mail;
-  const password = req.body.password;
-  const confirmPassword= req.body.confirmPassword;
+  // const {firstname, lastname, mail, password, confirmPassword } = req.body //autre ecriture 
+  // const firstname = req.body.firstname;
+  // const lastname =  req.body.lastname;
+  // const mail = req.body.mail;
+  // const password = req.body.password;
+  // const confirmPassword= req.body.confirmPassword;
+  const {firstname, lastname, mail, password, confirmPassword } = req.body
 
  // vérification que tous les champs sont remplis
  if(firstname === null || firstname === '' || lastname === null || lastname === '' 
@@ -47,7 +51,7 @@ exports.signup = (req, res, next) => {
     });
     user
     .save() // On enregistre l'utilisateur dans la base de donnée
-    .then(() => res.status(201).json({ message: "Utilisateur créé !" }))
+    .then(() => res.status(201).json({ message: "Utilisateur créé !" }))   //, user : user._id 
     .catch((error) => res.status(400).json({ error }));
   })
   .catch((error) => res.status(500).json({ error }));

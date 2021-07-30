@@ -14,18 +14,5 @@ function App() {
           </div>
   )
 }
-
 export default App;
 
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div>
-//           <Nav /> 
-//           <Signup />   
-//       </div>
-//     );
-//   }
-// }
-// export default App;

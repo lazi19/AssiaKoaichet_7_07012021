@@ -24,6 +24,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # mes fichiers double et essai
-./components/Signup1.js
-./components/Signup2.js
-./double.js
+components/Signup1.js
+components/Signup2.js
+double.js

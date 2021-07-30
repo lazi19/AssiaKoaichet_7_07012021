@@ -1,27 +1,52 @@
-
-
-// import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useForm } from "react-hook-form";
-import useSignUp from "../hooks/useSignup";
-import { ErrorMessage } from '@hookform/error-message';
-import '../styles/Signup.css'
+// import useSignUp from "../hooks/useSignup";
+// import { ErrorMessage } from '@hookform/error-message';
 
+import '../styles/Signup.css';
 
-const Signup = () => {
-    const { register, errors, handleSubmit } = useForm();
-    const { data, error, isLoading, signUp } = useSignUp();
-    console.log('data', data)
-    console.log('error', error)
-    console.log('isLoading', isLoading)
-   
-    console.log('=============')
+interface FormData {
+    
+  lastname: String;
+  firstname: String;
+  mail: String;
+  password: String;
+  terms: boolean;
+  }
+
+const Signup = () => {  
+    
+    const { register, handleSubmit, errors } = useForm<FormData>({
+        defaultValues: {
+            name: "test",
+            email: "email@email.com",
+            password: "P@ssw0rd!",
+            // terms: true,
+          }, 
+    });
+
 
     const onSubmit = data => {
-        console.log("dataaaaaaa     :", data);
-        signUp(data)
+        console.log("dataaaaaaa:", data);
+        useEffect()
     }
     
-    const onError = (errors, e) => console.log(errors, e);
+    // const onError = (errors, e) => console.log(errors, e);
+
+    useEffect(() => {
+        // POST request using fetch inside useEffect React hook
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: 'React Hooks POST Request Example' })
+        };
+        fetch('https://reqres.in/api/posts', requestOptions)
+            .then(response => response.json())
+            .then(data => setPostId(data.id));
+
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+    }, []);
+
 
     return (
         <div className="creationCompte">
@@ -85,6 +110,7 @@ const Signup = () => {
 
     )
        
+   
 }
 
 export default Signup;
